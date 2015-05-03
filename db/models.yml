@@ -1,0 +1,17 @@
+Article:
+  title: text
+  date: date
+  publication_id: integer
+  author_id: integer
+  first_few_lines: text
+  photo_url: text
+  category_id: integer
+
+Author:
+  name: string
+
+Publication:
+  name: string
+
+Category:
+  name: string
