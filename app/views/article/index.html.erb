@@ -8,7 +8,9 @@
   <div class="panel-body" style="min-height: 100px; max-height: 100px; overflow-y: scroll;">
     <%=article.first_few_lines %>
   </div>
-  <img src="http://www.teamstudio.com/Portals/218295/images/istock_000001242290small.jpg" class="img-responsive"/>
+  <div class="panel-body" style="text-align: center;">
+  <img src="<%=article.photo_url %>" class="img-responsive" style="min-height: 200px; max-height: 200px;"/>
+  </div>
   <div class="panel-footer">
     <div class="btn-group">
       <div class="btn-group">
