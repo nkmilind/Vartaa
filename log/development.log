@@ -6536,3 +6536,88 @@ Started GET "/assets/article.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b93
 
 
 Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-05-04 03:42:22 -0500
+
+
+Started GET "/article/13" for ::1 at 2015-05-04 21:44:48 -0500
+Processing by ArticleController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mArticle Load (1.9ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 13]]
+  Rendered article/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 156ms (Views: 129.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for ::1 at 2015-05-04 21:44:50 -0500
+Processing by ArticleController#index as HTML
+  [1m[36mArticle Load (0.7ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered article/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 109ms (Views: 105.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2015-05-05 13:38:05 -0500
+Processing by ArticleController#index as HTML
+  [1m[35mArticle Load (3.5ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered article/index.html.erb within layouts/application (19.1ms)
+Completed 200 OK in 189ms (Views: 174.1ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2015-05-05 13:38:06 -0500
+Processing by ArticleController#index as HTML
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered article/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 82ms (Views: 80.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2015-05-07 16:05:04 -0500
+Processing by ArticleController#index as HTML
+  [1m[35mArticle Load (4.5ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered article/index.html.erb within layouts/application (25.7ms)
+Completed 200 OK in 412ms (Views: 386.4ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-05-07 16:05:05 -0500
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-05-07 16:05:05 -0500
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-05-07 16:05:05 -0500
+
+
+Started GET "/assets/article.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-05-07 16:05:05 -0500
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-05-07 16:05:05 -0500
+
+
+Started GET "/assets/article.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-05-07 16:05:05 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-05-07 16:05:05 -0500
+
+
+Started GET "/" for ::1 at 2015-05-10 21:09:34 -0500
+Processing by ArticleController#index as HTML
+  [1m[36mArticle Load (2.5ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered article/index.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 381ms (Views: 314.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-05-10 21:09:35 -0500
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-05-10 21:09:35 -0500
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-05-10 21:09:35 -0500
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-05-10 21:09:35 -0500
+
+
+Started GET "/assets/article.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-05-10 21:09:35 -0500
+
+
+Started GET "/assets/article.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-05-10 21:09:35 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-05-10 21:09:35 -0500
