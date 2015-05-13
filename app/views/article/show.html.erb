@@ -1,4 +1,4 @@
-<p><b><%= article[:title] %></p></b>
+<p><b><%= @title[0] %></p></b>
 <div class="well">
-<p><%= article[:content] %></p>
+<p><%= (h @content[0]).gsub("\n", "<br />").html_safe %></p>
 </div>

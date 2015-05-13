@@ -60,4 +60,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.text    "name"
   end
 
+  add_foreign_key "content", "article", column: "id", name: "content_id_fkey"
+  add_foreign_key "metatags", "article", column: "id", name: "metatags_id_fkey"
+  add_foreign_key "ranking", "article", column: "id", name: "ranking_id_fkey"
 end
