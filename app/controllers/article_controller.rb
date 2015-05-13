@@ -4,9 +4,7 @@ class ArticleController < ApplicationController
   	@article = Article.take(6)  
   end
   def show
-  	article = {
-        title: Article.find_by(id: params["id"]),
-        content: Content.find_by(id: params["id"]) 
-    }
+  	@title = Article.where(id: params["id"]).pluck('title')
+    @content = Content.where(id: params["id"]).pluck('content')
   end
 end
