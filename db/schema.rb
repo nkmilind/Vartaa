@@ -13,30 +13,51 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "articles", force: :cascade do |t|
-    t.text    "title"
-    t.date    "date"
-    t.integer "publication_id"
-    t.integer "author_id"
-    t.text    "first_few_lines"
-    t.text    "photo_url"
-    t.integer "category_id"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "article", force: :cascade do |t|
+    t.text     "title",       null: false
+    t.datetime "date"
+    t.integer  "source_id",   null: false
+    t.text     "author_ids"
+    t.text     "description"
+    t.text     "photo_url"
+    t.text     "url"
+    t.integer  "category_id"
   end
 
-  add_index "articles", ["author_id"], name: "index_articles_on_author_id"
-  add_index "articles", ["category_id"], name: "index_articles_on_category_id"
-  add_index "articles", ["publication_id"], name: "index_articles_on_publication_id"
-
-  create_table "authors", force: :cascade do |t|
-    t.string "name"
+  create_table "author", id: false, force: :cascade do |t|
+    t.integer "id"
+    t.string  "name",  limit: 50
+    t.integer "count"
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
+  create_table "category", id: false, force: :cascade do |t|
+    t.integer "id"
+    t.text    "name"
   end
 
-  create_table "publications", force: :cascade do |t|
-    t.string "name"
+  create_table "content", id: false, force: :cascade do |t|
+    t.string "id",      limit: 50
+    t.text   "content"
+  end
+
+  create_table "metatags", id: false, force: :cascade do |t|
+    t.string "id",   limit: 50
+    t.text   "tags"
+  end
+
+  create_table "ranking", id: false, force: :cascade do |t|
+    t.string  "id",        limit: 50
+    t.integer "auto"
+    t.integer "admin"
+    t.integer "page_rank"
+  end
+
+  create_table "source", id: false, force: :cascade do |t|
+    t.integer "id"
+    t.text    "name"
   end
 
 end
