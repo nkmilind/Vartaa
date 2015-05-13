@@ -1,17 +1,37 @@
 Article:
+  id: text
   title: text
   date: date
-  publication_id: integer
-  author_id: integer
-  first_few_lines: text
+  source_id: integer
+  author_ids: text
+  description: text
   photo_url: text
+  url: text
   category_id: integer
 
-Author:
-  name: string
+Content:
+  id: text
+  content: text
 
-Publication:
+Author:
+  id: integer
+  name: string
+  count: integer
+
+Source:
+  id: integer
   name: string
 
 Category:
+  id: integer
   name: string
+
+Metatags:
+  id: text
+  tags: text
+
+Ranking:
+  id: text
+  auto: integer
+  admin: integer
+  user: integer
