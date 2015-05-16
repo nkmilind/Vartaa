@@ -10,7 +10,7 @@ default: &default
   database: vartaa
   pool: 5
   timeout: 5000
-  host: 127.0.0.1
+  host: 207.181.217.150
   username: postgres
   password: postgres
 
