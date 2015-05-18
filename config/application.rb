@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Final
+module Vartaa
   class Application < Rails::Application
     config.action_controller.permit_all_parameters = true
   end
