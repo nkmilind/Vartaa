@@ -1,7 +1,7 @@
 class ArticleController < ApplicationController
 
   def index
-  	@article = Article.take(6)  
+  	@article = Article.paginate(page: params['page'])  
   end
   def show
   	@title = Article.where(id: params["id"]).pluck('title')
