@@ -11,35 +11,13 @@
   <div class="panel-body" style="text-align: center;">
   <img src="<%=art.photo_url %>" class="img-responsive" style="min-height: 200px; max-height: 200px;"/>
   </div>
-  <div class="panel-footer">
-    <div class="btn-group">
-      <div class="btn-group">
-        <button class="btn btn-default btn-sm">
-          <i class="fa fa-arrow-down"></i>
-          Download
-        </button>
-      </div>
-      <div class="btn-group">
-        <button class="btn btn-default btn-sm">
-          <i class="fa fa-star"></i>
-          Favorite
-        </button>
-      </div>
-      <div class="btn-group">
-        <button class="btn btn-default btn-sm">
-          <i class="fa fa-envelope"></i>
-          Email
-        </button>
-      </div>
-    </div>
-  </div>
 </div>
 	</div>
 <% end %>
 </div>
-<div class="apple_pagination">
+<div class="pagination">
     <div class="page_info">
       <%= page_entries_info @article %>
     </div>
-    <%= will_paginate @article, :container => false %>
+    <%= will_paginate @article, renderer: BootstrapPagination::Rails %>
 </div>
