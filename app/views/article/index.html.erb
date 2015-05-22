@@ -10,7 +10,7 @@
   </div>
   <div class="panel-body" style="text-align: center;">
   <% if art.photo_url.to_s == ''  %>
-  <img src="/assets/<%= art.source_id %>" class="img-responsive" style="min-height: 200px; max-height: 200px;"/>
+  <img src="/images/<%= art.source_id %>" class="img-responsive" style="min-height: 200px; max-height: 200px;"/>
   <% else %>
   <img src="<%=art.photo_url %>" class="img-responsive" style="min-height: 200px; max-height: 200px;"/>
   <% end %>
