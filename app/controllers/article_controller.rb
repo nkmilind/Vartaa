@@ -54,8 +54,20 @@ class ArticleController < ApplicationController
   end
 
   def show
-  	@title = Article.where(id: params["id"]).pluck('title')
+    article = Article.where(id: params["id"])
+  	@title = article.pluck('title')
+  	@url = article.pluck('url')
+    id = article.pluck('source_id')
     @content = Content.where(id: params["id"]).pluck('content')
+    @source = Source.where(id: id).pluck('name')
+    @aut_ids = article.pluck('author_ids')
+    @authors = ''
+    if @aut_ids.size > 0
+        @authors = Author.where("id in (?)", @aut_ids[0].split(',')).pluck('name')
+#        if @authors.size > 1
+            @authors = [ @authors.join(", ") ]
+#        end
+    end
   end
 
 end
