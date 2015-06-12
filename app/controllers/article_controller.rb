@@ -37,9 +37,9 @@ class ArticleController < ApplicationController
 
   def sports
     @article = Article.where(
-        "date > ? AND category_id in (?,?,?,?)", 
+        "date > ? AND category_id in (?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
-        10, 57, 64, 70
+        10, 57, 64, 70, 73
     ).paginate(page: params['page']).order('date DESC')  
     render "article/index"
   end
@@ -64,9 +64,7 @@ class ArticleController < ApplicationController
     @authors = ''
     if @aut_ids.size > 0
         @authors = Author.where("id in (?)", @aut_ids[0].split(',')).pluck('name')
-#        if @authors.size > 1
-            @authors = [ @authors.join(", ") ]
-#        end
+        @authors = [ @authors.join(", ") ]
     end
   end
 

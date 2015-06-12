@@ -1,10 +1,10 @@
-<p><b><a href=<%= @url[0] %>><%= @title[0] %></a></p></b>
-<p>From: <b><%= @source[0] %></b>, 
+<h3> <a href=<%= @url[0] %>><%= @title[0] %></a></h3>
+<h5>From: <b><%= @source[0] %></b>
 <% if @authors[0] == '' -%>
 <% else -%>
 By: <b><%= @authors[0] %></b>
 <% end -%>
-</p>
+</h5>
 <div class="well">
 <p><%= (h @content[0]).gsub("\n", "<br />").html_safe %></p>
 </div>
