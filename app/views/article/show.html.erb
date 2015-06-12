@@ -4,6 +4,7 @@
 <% else -%>
 By: <b><%= @authors[0] %></b>
 <% end -%>
+ Published at: <b><%= @date[0].to_formatted_s(:long)  %></b>
 </h5>
 <div class="well">
 <p><%= (h @content[0]).gsub("\n", "<br />").html_safe %></p>
