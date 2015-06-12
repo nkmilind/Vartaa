@@ -56,6 +56,7 @@ class ArticleController < ApplicationController
   def show
     article = Article.where(id: params["id"])
   	@title = article.pluck('title')
+  	@date = article.pluck('date')
   	@url = article.pluck('url')
     id = article.pluck('source_id')
     @content = Content.where(id: params["id"]).pluck('content')
