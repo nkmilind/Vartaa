@@ -19,9 +19,9 @@ class ArticleController < ApplicationController
 
   def business
     @article = Article.where(
-        "date > ? AND category_id in (?,?,?,?,?,?)", 
+        "date > ? AND category_id in (?,?,?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
-        30, 32, 33, 38, 59, 63 
+        30, 32, 33, 38, 59, 63, 138
     ).paginate(page: params['page']).order('date DESC')  
     render "article/index"
   end
@@ -46,9 +46,9 @@ class ArticleController < ApplicationController
 
   def ent
     @article = Article.where(
-        "date > ? AND category_id in (?,?,?,?,?)", 
+        "date > ? AND category_id in (?,?,?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
-        6, 99, 100, 101, 105
+        6, 99, 100, 101, 105, 129, 135
     ).paginate(page: params['page']).order('date DESC')  
     render "article/index"
   end
