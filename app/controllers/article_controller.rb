@@ -3,9 +3,9 @@ class ArticleController < ApplicationController
   def index
     @article = Article.where(
         "date > ? AND category_id not in (?,?,?,?,?,?,?)", 
-        Date.today.prev_day.prev_day.to_formatted_s(:db),
+        Date.today.prev_day.to_formatted_s(:db),
         3, 4, 5, 6, 62, 115, 117
-    ).paginate(page: params['page']).order('date DESC') 
+    ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank') 
   end
   
   def politics
@@ -13,7 +13,7 @@ class ArticleController < ApplicationController
         "date > ? AND category_id in (?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         31 
-    ).paginate(page: params['page']).order('date DESC')  
+    ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank')  
     render "article/index"
   end
 
@@ -22,7 +22,7 @@ class ArticleController < ApplicationController
         "date > ? AND category_id in (?,?,?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         30, 32, 33, 38, 59, 63, 138
-    ).paginate(page: params['page']).order('date DESC')  
+    ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank')  
     render "article/index"
   end
 
@@ -31,7 +31,7 @@ class ArticleController < ApplicationController
         "date > ? AND category_id in (?,?,?,?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         8, 9, 37, 74, 89, 112, 117, 120
-    ).paginate(page: params['page']).order('date DESC')  
+    ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank')  
     render "article/index"
   end
 
@@ -40,7 +40,7 @@ class ArticleController < ApplicationController
         "date > ? AND category_id in (?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         10, 57, 64, 70, 73
-    ).paginate(page: params['page']).order('date DESC')  
+    ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank')  
     render "article/index"
   end
 
@@ -49,7 +49,7 @@ class ArticleController < ApplicationController
         "date > ? AND category_id in (?,?,?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         6, 99, 100, 101, 105, 129, 135
-    ).paginate(page: params['page']).order('date DESC')  
+    ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank')  
     render "article/index"
   end
 
