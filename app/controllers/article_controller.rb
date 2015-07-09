@@ -4,7 +4,7 @@ class ArticleController < ApplicationController
     @article = Article.where(
         "date > ? AND category_id not in (?,?,?,?,?,?,?)", 
         Date.today.prev_day.to_formatted_s(:db),
-        3, 4, 5, 6, 62, 115, 117
+        3, 4, 5, 6, 62, 115, 117 
     ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank') 
   end
   
