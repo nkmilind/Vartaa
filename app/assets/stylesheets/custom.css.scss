@@ -1,0 +1,19 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+#logo {
+	height: 120%;
+  	margin-top: -8px;
+  	margin-left: 350px;
+}
+body {
+	padding-top: 30px;
+}
+
+.navbar-default {
+	background-color: #2C3E50;
+}
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 150px;
+    height: 150px;
+}
