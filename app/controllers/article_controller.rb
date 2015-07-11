@@ -6,6 +6,7 @@ class ArticleController < ApplicationController
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         3, 4, 5, 6, 62, 115, 117
     ).paginate(page: params['page']).order('date DESC')  
+    render "article/index"
   end
   
   def politics
