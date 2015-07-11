@@ -3,14 +3,14 @@
 	<div class="col-sm-4">
 	   <div class="panel panel-default bootcards-media">
   <div class="panel-heading" style="min-height: 80px; max-height: 80px;">
-    <h3 class="panel-title"><a href="/article/<%= art.id %>"><%= HTMLEntities.new.decode art.title %></a></h3>
+    <h3 class="panel-title"><img id = "publication-logo" src="images/<%= art.source_id %>.jpg"><a href="/article/<%= art.id %>"><%= HTMLEntities.new.decode art.title %></a></h3>
   </div>
   <div class="panel-body" style="min-height: 100px; max-height: 100px; overflow-y: scroll;">
     <%= HTMLEntities.new.decode art.description %>
   </div>
   <div class="panel-body" style="text-align: center;">
   <% if art.photo_url.to_s == ''  %>
-  <a href="/article/<%= art.id %>"><img src="/images/<%= art.source_id %>" class="img-responsive" style="min-height: 200px; max-height: 200px;"/>
+  <a href="/article/<%= art.id %>"><img src="/images/<%= art.source_id %>.jpg" class="img-responsive" style="min-height: 200px; max-height: 200px;"/>
   <% else %>
   <a href="/article/<%= art.id %>"><img src="<%=art.photo_url %>" class="img-responsive" style="min-height: 200px; max-height: 200px;"/>
   <% end %>
