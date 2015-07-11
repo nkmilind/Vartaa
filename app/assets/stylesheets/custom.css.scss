@@ -3,7 +3,7 @@
 #logo {
 	height: 120%;
   	margin-top: -8px;
-  	margin-left: 370px;
+  	margin-left: -72px;
 }
 
 #publication-logo {
@@ -23,13 +23,16 @@ body {
 	background-color: #2C3E50;
 }
 
-.navbar-brand,
+.navbar-brand-centered,
 .navbar-nav li a {
+	position: absolute;
+    left: 50%;
+    text-align: center;
     line-height: 120px;
     height: 120px;
 }
 
 .nav-pills,
 .navbar-nav li a {
-    margin-top: -20px;
+	margin-top: 60px;
 }
