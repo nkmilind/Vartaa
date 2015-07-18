@@ -1,0 +1,7 @@
+$('#row').append('<%= j render @article %>');
+<% if @article.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @article %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>

@@ -6,6 +6,10 @@ class ArticleController < ApplicationController
         Date.today.prev_day.to_formatted_s(:db),
         3, 4, 5, 6, 62, 115, 117 
     ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank') 
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   def politics
