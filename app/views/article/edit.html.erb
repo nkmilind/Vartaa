@@ -1,0 +1,31 @@
+<%= form_for @article do |form| %>
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :date %>
+    <%= form.text_area :date, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :publication %>
+    <%= form.text_field :publication, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :author %>
+    <%= form.text_field :author, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :photo_url %>
+    <%= form.text_field :photo_url, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, {} %>
+  </div>
+  <%= form.button 'Edit Article', class: "btn btn-success" %>
+<% end %>
