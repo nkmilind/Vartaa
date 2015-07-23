@@ -1,5 +1,5 @@
 class ArticleController < ApplicationController
-
+  skip_before_filter :auth, only: [:show, :index, :politics, :business, :oped, :sports, :ent]
   def index
     @article = Article.where(
         "date > ? AND category_id not in (?,?,?,?,?,?,?)", 
