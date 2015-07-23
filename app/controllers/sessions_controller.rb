@@ -13,11 +13,11 @@ class SessionsController < ApplicationController
         session["user_id"] = @user.id
         redirect_to root_url
       else
-        redirect_to new_session_url, alert: 'No way!!!'
+        redirect_to new_sessions_url, alert: 'No way!!!'
       end
     else
       # No user with that email
-      redirect_to new_session_url, alert: 'No way!!!'
+      redirect_to new_sessions_url, alert: 'No way!!!'
     end
 
     # Redirect to the root_path

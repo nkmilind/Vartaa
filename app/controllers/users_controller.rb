@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+skip_before_action :auth, only: [:new, :create]
 
   def index
     @users = User.all
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(params["user"])
     if @user.valid?
-      redirect_to users_path
+      redirect_to users_index_path
     else
       render "new"
     end
@@ -29,12 +29,12 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params["id"])
     @user.update(params["user"])
-    redirect_to users_path
+    redirect_to users_index_path
   end
 
   def destroy
     @user = User.find_by(id: params["id"])
     @user.destroy
-    redirect_to users_path
+    redirect_to users_index_path
   end
 end
