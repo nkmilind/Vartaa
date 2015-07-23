@@ -35,3 +35,9 @@ Ranking:
   auto: integer
   admin: integer
   user: integer
+
+User:
+  name: string
+  email: string
+  password_digest: string
+  admin: boolean
