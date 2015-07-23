@@ -16,14 +16,16 @@
 //= require_tree .
 
 $(document).ready(function() {
-  if ($('.pagination').length) {
+  if ($('#infinite-scrolling').size() > 0) {
     $(window).scroll(function() {
       var url = $('.pagination .next_page').attr('href');
       if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
         $('.pagination').text("Please Wait...");
-        return $.getScript(url);
+        $.getScript(url);
+        return;
       }
     });
-    return $(window).scroll();
+    $(window).scroll();
+    return;
   }
 });
