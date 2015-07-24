@@ -3,19 +3,23 @@
 <head>
   <title>Vartaa</title>
   <%= javascript_include_tag 'application' %>
-    <!-- Bootstrap -->
+  <!-- Bootstrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-<!-- Bootcards -->
+  <!-- Bootcards -->
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
 
-    <!-- Font Awesome -->
+  <!-- Font Awesome -->
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <!-- CSS Stylesheet -->
+  <%= stylesheet_link_tag "/stylesheets/custom.css.scss" %>
+
 </head>
 <body>
 
