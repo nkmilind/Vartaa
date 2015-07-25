@@ -50,9 +50,9 @@ class ArticleController < ApplicationController
 
   def ent
     @article = Article.where(
-        "date > ? AND category_id in (?,?,?,?,?,?,?)", 
+        "date > ? AND category_id in (?,?,?,?,?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
-        6, 99, 100, 101, 105, 129, 135
+        6, 99, 100, 101, 105, 124, 129, 135, 148
     ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank')  
     render "article/index"
   end
