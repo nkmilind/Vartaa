@@ -2,7 +2,7 @@ class ArticleController < ApplicationController
 
   def index
     @article = Article.where(
-        "date > ? AND category_id not in (?,?,?,?,?,?,?)", 
+        "date >= ? AND category_id not in (?,?,?,?,?,?,?)", 
         Date.today.prev_day.to_formatted_s(:db),
         3, 4, 5, 6, 62, 115, 117 
     ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank') 
@@ -14,7 +14,7 @@ class ArticleController < ApplicationController
   
   def politics
     @article = Article.where(
-        "date > ? AND category_id in (?)", 
+        "date >= ? AND category_id in (?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         31 
     ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank')  
@@ -23,7 +23,7 @@ class ArticleController < ApplicationController
 
   def business
     @article = Article.where(
-        "date > ? AND category_id in (?,?,?,?,?,?,?)", 
+        "date >= ? AND category_id in (?,?,?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         30, 32, 33, 38, 59, 63, 138
     ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank')  
@@ -32,7 +32,7 @@ class ArticleController < ApplicationController
 
   def oped
     @article = Article.where(
-        "date > ? AND category_id in (?,?,?,?,?,?,?,?)", 
+        "date >= ? AND category_id in (?,?,?,?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         8, 9, 37, 74, 89, 112, 117, 120
     ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank')  
@@ -41,7 +41,7 @@ class ArticleController < ApplicationController
 
   def sports
     @article = Article.where(
-        "date > ? AND category_id in (?,?,?,?,?)", 
+        "date >= ? AND category_id in (?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         10, 57, 64, 70, 73
     ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank')  
@@ -50,7 +50,7 @@ class ArticleController < ApplicationController
 
   def ent
     @article = Article.where(
-        "date > ? AND category_id in (?,?,?,?,?,?,?,?,?)", 
+        "date >= ? AND category_id in (?,?,?,?,?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         6, 99, 100, 101, 105, 124, 129, 135, 148
     ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.page_rank')  
