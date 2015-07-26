@@ -6,6 +6,15 @@ By: <b><%= @authors[0] %></b>
 <% end -%>
  Published at: <b><%= @date[0].to_formatted_s(:long)  %></b>
 </h5>
+<% if current_user.try(:admin?) %>
+    <%= form_tag("/rank", method: "post") do %>
+        <%= label_tag(:q, "Rank:") %>
+        <%= number_field_tag(:rank, @def_rank) %>
+        <%= hidden_field_tag(:id, @my_id) %>
+        <%= submit_tag("Set Rank") %>
+    <% end %>
+    <p>Current Rank: <%= @def_rank[0] %><p>
+<% end %>
 <div class="well">
 <p><%= (h @content[0]).gsub("\n", "<br />").html_safe %></p>
 </div>

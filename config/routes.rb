@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   get '/sports', to: 'article#sports'
   get '/ent', to: 'article#ent'
   get "/logout", to: "sessions#destroy"
-
+  post "/rank", to: "article#rank"
   root to: "article#index"
 end
