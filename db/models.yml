@@ -34,7 +34,7 @@ Ranking:
   id: text
   auto: integer
   admin: integer
-  user: integer
+  page_rank: integer
 
 User:
   name: string

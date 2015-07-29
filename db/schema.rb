@@ -17,15 +17,17 @@ ActiveRecord::Schema.define(version: 0) do
   enable_extension "plpgsql"
 
   create_table "article", force: :cascade do |t|
-    t.text     "title",       null: false
-    t.datetime "date"
-    t.integer  "source_id",   null: false
-    t.text     "author_ids"
-    t.text     "description"
-    t.text     "photo_url"
-    t.text     "url"
-    t.integer  "category_id"
+    t.text    "title",       null: false
+    t.date    "date"
+    t.integer "source_id",   null: false
+    t.text    "author_ids"
+    t.text    "description"
+    t.text    "photo_url"
+    t.text    "url"
+    t.integer "category_id"
   end
+
+  add_index "article", ["date"], name: "time_idx", using: :btree
 
   create_table "author", id: false, force: :cascade do |t|
     t.integer "id"
@@ -35,29 +37,39 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "category", id: false, force: :cascade do |t|
     t.integer "id"
-    t.text    "name"
+    t.string  "name"
   end
 
   create_table "content", id: false, force: :cascade do |t|
-    t.string "id",      limit: 50
-    t.text   "content"
+    t.text "id"
+    t.text "content"
   end
 
   create_table "metatags", id: false, force: :cascade do |t|
-    t.string "id",   limit: 50
-    t.text   "tags"
+    t.text "id"
+    t.text "tags"
   end
 
   create_table "ranking", id: false, force: :cascade do |t|
-    t.string  "id",        limit: 50
+    t.text    "id"
     t.integer "auto"
     t.integer "admin"
     t.integer "page_rank"
   end
 
+  add_index "ranking", ["id"], name: "id_idx", using: :btree
+
   create_table "source", id: false, force: :cascade do |t|
     t.integer "id"
-    t.text    "name"
+    t.string  "name"
+  end
+
+  create_table "user", force: :cascade do |t|
+    t.string  "name"
+    t.string  "email"
+    t.string  "password_digest"
+    t.boolean "admin",           default: false
+    t.string  "city"
   end
 
   add_foreign_key "content", "article", column: "id", name: "content_id_fkey"
