@@ -40,6 +40,5 @@ User:
   name: string
   email: string
   password_digest: string
-  region: string
-  age: integer
+  city: string
   admin: boolean
