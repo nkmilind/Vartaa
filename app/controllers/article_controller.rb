@@ -61,15 +61,17 @@ class ArticleController < ApplicationController
     article = Article.where(id: params["id"])
     rank = Ranking.where(id: params["id"])
     @def_rank = rank.pluck('admin')
-  	@title = article.pluck('title')
+    @title = article.pluck('title')
     @title[0] = HTMLEntities.new.decode @title[0]
-  	@date = article.pluck('date')
-  	@url = article.pluck('url')
+    @date = article.pluck('date')
+    @url = article.pluck('url')
     @my_id = params["id"]
+    @photo_url = article.pluck('photo_url')
     id = article.pluck('source_id')
     @content = Content.where(id: params["id"]).pluck('content')
     @content[0] = HTMLEntities.new.decode @content[0]
     @source = Source.where(id: id).pluck('name')
+    @source_id = article.pluck('source_id')
     @aut_ids = article.pluck('author_ids')
     @authors = ''
     if @aut_ids.size > 0

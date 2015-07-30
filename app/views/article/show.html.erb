@@ -16,5 +16,9 @@ By: <b><%= @authors[0] %></b>
     <p>Current Rank: <%= @def_rank[0] %><p>
 <% end %>
 <div class="well">
+        <% if @photo_url.to_s == ''  %>
+        <% else %>
+			<img id = "article-photo" src="<%=@photo_url[0] %>" align = "left" class="img-responsive" style="min-height: 200px; max-height: 200px; padding-right:20px; padding-bottom:20px;"/>
+        <% end %>
 <p><%= (h @content[0]).gsub("\n", "<br />").html_safe %></p>
 </div>
