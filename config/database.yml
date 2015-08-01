@@ -7,15 +7,15 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: vartaa
   pool: 5
   timeout: 5000
-  host: 207.181.217.150
-  username: postgres
-  password: postgres
 
 development:
   <<: *default
+  database: vartaatest
+  host: vartaa-test.cu829urpqqax.us-west-2.rds.amazonaws.com
+  username: vartaa_test
+  password: Vart1AdotIn
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -25,3 +25,8 @@ test:
 
 production:
   <<: *default
+  database: vartaa
+  host: 207.181.217.150
+  username: postgres
+  password: postgres
+
