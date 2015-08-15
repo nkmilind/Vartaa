@@ -1,7 +1,8 @@
-<div class="col-sm-3">
+<div class="grid">
+    <div class="col-xs-4 bootcards-list">
    <div class="panel panel-default bootcards-media">
       <div class="panel-heading" style="min-height: 90px; max-height: 90px; overflow-y: scroll;">
-        <h3 class="panel-title" style="    font-size: 14.5px;;">
+        <h3 class="panel-title" style="    font-size: 14.5px;">
             <img id = "publication-logo" src="/images/<%= article.source_id %>.jpg">
                 <small><%= HTMLEntities.new.decode article.date.to_formatted_s(:long) %></small>
                 <a href="/article/<%= article.id %>"><%= HTMLEntities.new.decode article.title %></a>
@@ -17,7 +18,6 @@
         <% else %>
             <a href="/article/<%= article.id %>"><img src="<%=article.photo_url %>" class="img-responsive" style="min-height: 200px; max-height: 200px;"/>
         <% end %>
-       </div>
-    </div>
+      </div>
+  </div>
 </div>
-
