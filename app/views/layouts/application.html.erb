@@ -136,7 +136,10 @@
  <nav class="navbar navbar-fixed-bottom" role="navigation">
  <div class="foot">
        <div id="static-pagination">
-       <%= will_paginate %>
+       <% if current_page?(root_path) | current_page?('/politics') | current_page?('/oped') | current_page?('/business') | current_page?('/sports') | current_page?('/ent') -%>
+       <%= will_paginate %> 
+       <% else %>
+       <% end %>
        </div>
   <footer class="footer">&copy; Vartaa <a href='/' style="color: white"> | Home </a> <a href='/static_pages/about' style="color: white"> | About Us </a>  <a href='/static_pages/contact' style="color: white"> | Contact Us </a>       
   </div>
