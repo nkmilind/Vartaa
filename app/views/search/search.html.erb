@@ -12,8 +12,11 @@
   <% @articles.each do |article| %>
     <li>
       <h3>
-        <a href="/article/<%= article.id %>"> <%= article.title %></a>
+        <a href="/article/<%= article.id %>"> <%= HTMLEntities.new.decode article.title %></a>
       </h3>
     </li>
   <% end %>
 </ul>
+<div id="infinite-scrolling">
+    <%= will_paginate @articles %>
+</div>
