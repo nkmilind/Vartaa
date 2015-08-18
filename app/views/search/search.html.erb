@@ -17,6 +17,8 @@
     </li>
   <% end %>
 </ul>
-<div id="infinite-scrolling">
-    <%= will_paginate @articles %>
+<div id="search">
+    <% if @articles.any?  %>
+        <%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+    <% end %>
 </div>

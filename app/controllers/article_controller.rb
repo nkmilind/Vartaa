@@ -14,9 +14,9 @@ class ArticleController < ApplicationController
   
   def politics
     @article = Article.where(
-        "date >= ? AND category_id in (?)", 
+        "date >= ? AND category_id in (?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
-        31 
+        31, 168 
     ).joins(' JOIN ranking on ranking.id = article.id').paginate(page: params['page']).order('ranking.admin', 'ranking.page_rank')  
     render "article/index"
   end
