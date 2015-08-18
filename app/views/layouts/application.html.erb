@@ -32,8 +32,13 @@
           </button>
           <!-- Rails equivalent to -->
          <a href="/" class="navbar-brand navbar-brand-centered"><img id = "logo" src="/images/vartaa-01.jpg"></a>
-        </div>
+        </div> 
         </nav>
+              <div class="search">
+              <a href="/search">
+                <i class="fa fa-search fa-2x"></i>
+              </a>
+              </div>
 
         <!-- Static Pages About Us and Contact Us -->
         <% if controller.controller_name == 'static_pages' -%>
@@ -90,13 +95,6 @@
               </a>
             </li>   
           <!-- </ul> -->
-          <!-- <ul class="nav navbar-nav"> -->
-            <li role="presentation" <% if current_page?('/search') -%> class="active" <% else %> <% end %>>
-              <a href="/search">
-                <i class="fa fa-search"></i>
-                Search
-              </a>
-            </li>   
 
 
  <!-- Admin Menu -->

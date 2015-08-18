@@ -31,7 +31,7 @@ body {
 
 .nav-pills,
 .navbar-nav li a {
-	margin-top: 60px;
+	margin-top: 20px;
 }
 
 .nav-pills > li.active > a,
@@ -64,4 +64,9 @@ body {
 .article-show
 {
     padding-bottom: 10px;
+}
+
+.search
+{
+    text-align: right;
 }
