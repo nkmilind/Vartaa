@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 0) do
   enable_extension "plpgsql"
 
   create_table "article", force: :cascade do |t|
-    t.text     "title",       null: false
-    t.datetime "date"
-    t.integer  "source_id",   null: false
-    t.text     "author_ids"
-    t.text     "description"
-    t.text     "photo_url"
-    t.text     "url"
-    t.integer  "category_id"
+    t.text    "title",       null: false
+    t.date    "date"
+    t.integer "source_id",   null: false
+    t.text    "author_ids"
+    t.text    "description"
+    t.text    "photo_url"
+    t.text    "url"
+    t.integer "category_id"
   end
 
   create_table "author", id: false, force: :cascade do |t|
@@ -35,29 +35,53 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "category", id: false, force: :cascade do |t|
     t.integer "id"
-    t.text    "name"
+    t.string  "name"
+  end
+
+  create_table "comments", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "article_id",   default: "50"
+    t.text    "comment"
+    t.date    "created_date"
+    t.date    "updated_date"
   end
 
   create_table "content", id: false, force: :cascade do |t|
-    t.string "id",      limit: 50
-    t.text   "content"
+    t.text "id"
+    t.text "content"
   end
 
   create_table "metatags", id: false, force: :cascade do |t|
-    t.string "id",   limit: 50
-    t.text   "tags"
+    t.text "id"
+    t.text "tags"
   end
 
   create_table "ranking", id: false, force: :cascade do |t|
-    t.string  "id",        limit: 50
+    t.text    "id"
     t.integer "auto"
     t.integer "admin"
     t.integer "page_rank"
+    t.integer "likes"
+    t.integer "dislikes"
   end
 
   create_table "source", id: false, force: :cascade do |t|
     t.integer "id"
-    t.text    "name"
+    t.string  "name"
+  end
+
+  create_table "user", force: :cascade do |t|
+    t.string  "name"
+    t.string  "email"
+    t.string  "password_digest"
+    t.string  "city"
+    t.boolean "admin",           default: false
+  end
+
+  create_table "userlikes", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "article_id", default: "50"
+    t.integer "likes"
   end
 
   add_foreign_key "content", "article", column: "id", name: "content_id_fkey"

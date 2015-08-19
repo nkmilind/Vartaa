@@ -78,10 +78,54 @@ class ArticleController < ApplicationController
         @authors = Author.where("id in (?)", @aut_ids[0].split(',')).pluck('name')
         @authors = [ @authors.join(", ") ]
     end
+    @comments = Comments.select('"user".name as name, comments.comment as comment').where(article_id: params["id"] ).joins(' JOIN "user" on "user".id = comments.user_id').order('comments.created_date')
+    if current_user
+        u_like = Userlikes.find_by(
+            article_id: params["id"], 
+            user_id: current_user.id
+        )
+        if u_like
+           @likes = u_like.likes
+        end
+    end
   end
 
   def rank
     Ranking.where(id: params["id"]).update_all(admin: params["rank"])
     redirect_to :back
   end
+
+  def like
+    rank = Ranking.find_by(id: params["id"])
+    likes = rank.likes + 1
+    dislikes = rank.dislikes == 0 ? 0 : rank.dislikes - 1
+    Ranking.where(id: params["id"]).update_all(likes: likes, dislikes: dislikes)
+    u_likes = Userlikes.find_by(article_id: params["id"], user_id: current_user.id )
+    if u_likes.nil?  
+       Userlikes.create(user_id: current_user.id, likes: 1, article_id: params["id"])  
+    else
+        Userlikes.where(article_id: params["id"], user_id: current_user.id ).update_all(likes: 1)
+    end
+    redirect_to :back
+  end
+
+  def dislike
+    rank = Ranking.find_by(id: params["id"])
+    dislikes = rank.dislikes + 1
+    likes = rank.likes == 0 ? 0 : rank.likes - 1
+    Ranking.where(id: params["id"]).update_all(likes: likes, dislikes: dislikes)
+    u_likes = Userlikes.find_by(article_id: params["id"], user_id: current_user.id )
+    if u_likes.nil?  
+       Userlikes.create(user_id: current_user.id, likes: 0, article_id: params["id"])  
+    else 
+        Userlikes.where(article_id: params["id"], user_id: current_user.id ).update_all(likes: 0)
+    end
+    redirect_to :back
+  end
+
+  def comment
+    Ranking.where(id: params["id"]).update_all(admin: params["rank"])
+    redirect_to :back
+  end
+
 end

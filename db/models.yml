@@ -35,6 +35,8 @@ Ranking:
   auto: integer
   admin: integer
   page_rank: integer
+  likes:     integer
+  dislikes:  integer
 
 User:
   name: string
@@ -42,3 +44,16 @@ User:
   password_digest: string
   city: string
   admin: boolean
+
+Comments:
+  user_id: integer
+  article_id: varchar(50)
+  comment:  text
+  created_date: date 
+  updated_date: date
+
+Userlikes:
+  user_id: integer
+  likes:  integer
+  article_id: varchar(50)
+  

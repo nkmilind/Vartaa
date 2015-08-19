@@ -15,6 +15,20 @@ By: <b><%= @authors[0] %></b>
     <% end %>
     <p>Current Rank: <%= @def_rank[0] %><p>
 <% end %>
+<% if current_user %>
+    <% if @likes.nil? %>
+        <%= button_to "Like", { action: "like", id: @my_id }, { id: "color-norm" } %>
+        <%= button_to "Dislike", { action: "dislike", id: @my_id }, { id: "color-norm" } %>
+    <% else %>
+        <% if @likes[0] == 1 %>
+            <%= button_to "Like", { action: "like", id: @my_id }, { id: "color-green" } %>
+            <%= button_to "Dislike", { action: "dislike", id: @my_id }, { id: "color-norm" } %>
+        <% else %>
+            <%= button_to "Like", { action: "like", id: @my_id }, { id: "color-norm" } %>
+            <%= button_to "Dislike", { action: "dislike", id: @my_id }, { id: "color-red" } %>
+        <% end %>
+    <% end %>
+<% end %>
 <div class="article-show">
 <div class="well">
         <% if @photo_url.to_s == ''  %>
@@ -23,4 +37,13 @@ By: <b><%= @authors[0] %></b>
         <% end %>
 <p><%= (h @content[0]).gsub("\n", "<br />").html_safe %></p>
 </div>
+<h3>Comments</h3>
+<% @comments.each do |comment| %>
+  <div>
+    <strong><%= comment.name %></strong>
+    <br />
+    <p><%= comment.comment %></p>
+  </div>
+<% end %>
 </div>
+

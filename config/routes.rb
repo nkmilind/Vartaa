@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#destroy"
   get "search", to: "search#search"
   post "/rank", to: "article#rank"
+  post "/like", to: "article#like"
+  post "/dislike", to: "article#dislike"
   root to: "article#index"
 end
