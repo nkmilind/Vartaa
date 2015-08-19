@@ -10,8 +10,10 @@ class ArticleController < ApplicationController
       format.html
       format.js
     end
+    id = @article.pluck('id')[0]
+    @def_rank = Ranking.where(id: 'id').pluck('admin')
   end
-  
+
   def politics
     @article = Article.where(
         "date >= ? AND category_id in (?)", 
