@@ -15,13 +15,39 @@
       <div class="panel-body" style="min-height: 90px; max-height: 90px; overflow-y: scroll;">
         <%= HTMLEntities.new.decode article.description %>
       </div>
-      <div class="panel-body" style="text-align: center;">
+      <div class="panel-body text-center">
         <% if article.photo_url.to_s == ''  %>
             <a href="/article/<%= article.id %>">
-                <img src="/images/<%= article.source_id %>.jpg" class="img-responsive" style="min-height: 200px; max-height: 200px;"/>
+                <img src="/images/<%= article.source_id %>.jpg" class="img-responsive" style="min-height: 200px; max-height: 20px;"/>
         <% else %>
             <a href="/article/<%= article.id %>"><img src="<%=article.photo_url %>" class="img-responsive" style="min-height: 200px; max-height: 200px;"/>
         <% end %>
+        <div class="panel-footer">
+          <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+              <button class="btn btn-default btn-sm">
+              <i class="fa fa-arrow-up"></i>
+              Upvotes
+              </button>
+        </div>
+          <div class="btn-group">
+            <button class="btn btn-default btn-sm">
+            <i class="fa fa-arrow-down"></i>
+            Downvotes
+          </button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-default btn-sm">
+          <% if !@def_rank %>
+          <i class="fa fa-star"></i>
+          <% else %>
+          <i class="fa fa-star" style="color:#ffd700"></i>
+          <% end %>
+          Our Pick
+          </button>
+        </div>
+          </div>
+        </div>
       </div>
   </div>
 </div>
