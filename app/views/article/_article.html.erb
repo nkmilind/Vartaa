@@ -1,5 +1,5 @@
 <div class="grid">
-  <% if !params["page"] %>
+  <% if current_page?(root_path) && !params["page"] %>
   <div class="col-xs-6 bootcards-list">
     <% else %>
     <div class="col-xs-4 bootcards-list">

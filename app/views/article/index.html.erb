@@ -1,5 +1,6 @@
 <div id="main">
     <div class="row">
+     <% if current_page?(root_path) -%>
     	  <div class="col-2-3">
           <%= render @article %>
     	  </div>
@@ -11,7 +12,7 @@
 						Latest Headlines
         				</h3>
       					</div>
-      					<div class="panel-body" style="min-height: 905px; max-height: 905px; overflow-y: scroll;">
+      					<div class="panel-body" style="min-height: 1385px; max-height: 1385px; overflow-y: scroll;">
                         <% @latest.each do |late| %>
                            <p><%= HTMLEntities.new.decode late.title %></p>
        					<% end %>
@@ -21,6 +22,9 @@
   		  	   </div>
 		  </div>
     </div>
+    <% else %>
+    <%= render @article %>
+    <% end %>
 </div>
 <div id="infinite-scrolling" style="visibility:hidden">
   <%= will_paginate %>
