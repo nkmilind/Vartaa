@@ -27,18 +27,18 @@
             <div class="btn-group">
               <button class="btn btn-default btn-sm">
               <i class="fa fa-arrow-up"></i>
-              Upvotes
+              <%= article.likes %>
               </button>
         </div>
           <div class="btn-group">
             <button class="btn btn-default btn-sm">
             <i class="fa fa-arrow-down"></i>
-            Downvotes
+            <%= article.dislikes %>
           </button>
         </div>
         <div class="btn-group">
           <button class="btn btn-default btn-sm">
-          <% if !@def_rank %>
+          <% if article.admin == 1000 %>
           <i class="fa fa-star"></i>
           <% else %>
           <i class="fa fa-star" style="color:#ffd700"></i>

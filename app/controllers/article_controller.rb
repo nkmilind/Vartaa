@@ -1,7 +1,7 @@
 class ArticleController < ApplicationController
   skip_before_filter :auth, only: [:show, :index, :politics, :business, :oped, :sports, :ent]
   def index
-    @article = Article.where(
+    @article = Article.select('*, ranking.admin, ranking.likes, ranking.dislikes').where(
         "date >= ? AND category_id not in (?,?,?,?,?,?,?)", 
         Date.today.prev_day.to_formatted_s(:db),
         3, 4, 5, 6, 62, 115, 117 
@@ -10,12 +10,10 @@ class ArticleController < ApplicationController
       format.html
       format.js
     end
-    id = @article.pluck('id')[0]
-    @def_rank = Ranking.where(id: 'id').pluck('admin')
   end
 
   def politics
-    @article = Article.where(
+    @article = Article.select('*, ranking.admin, ranking.likes, ranking.dislikes').where(
         "date >= ? AND category_id in (?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         31, 168 
@@ -24,7 +22,7 @@ class ArticleController < ApplicationController
   end
 
   def business
-    @article = Article.where(
+    @article = Article.select('*, ranking.admin, ranking.likes, ranking.dislikes').where(
         "date >= ? AND category_id in (?,?,?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         30, 32, 33, 38, 59, 63, 138
@@ -33,7 +31,7 @@ class ArticleController < ApplicationController
   end
 
   def oped
-    @article = Article.where(
+    @article = Article.select('*, ranking.admin, ranking.likes, ranking.dislikes').where(
         "date >= ? AND category_id in (?,?,?,?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         8, 9, 37, 74, 89, 112, 117, 120
@@ -42,7 +40,7 @@ class ArticleController < ApplicationController
   end
 
   def sports
-    @article = Article.where(
+    @article = Article.select('*, ranking.admin, ranking.likes, ranking.dislikes').where(
         "date >= ? AND category_id in (?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         10, 57, 64, 70, 73
@@ -51,7 +49,7 @@ class ArticleController < ApplicationController
   end
 
   def ent
-    @article = Article.where(
+    @article = Article.select('*, ranking.admin, ranking.likes, ranking.dislikes').where(
         "date >= ? AND category_id in (?,?,?,?,?,?,?,?,?)", 
         Date.today.prev_day.prev_day.to_formatted_s(:db),
         6, 99, 100, 101, 105, 124, 129, 135, 148
