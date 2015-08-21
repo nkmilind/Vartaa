@@ -96,35 +96,43 @@ class ArticleController < ApplicationController
   end
 
   def like
-    rank = Ranking.find_by(id: params["id"])
-    likes = rank.likes + 1
-    dislikes = rank.dislikes == 0 ? 0 : rank.dislikes - 1
-    Ranking.where(id: params["id"]).update_all(likes: likes, dislikes: dislikes)
     u_likes = Userlikes.find_by(article_id: params["id"], user_id: current_user.id )
     if u_likes.nil?  
        Userlikes.create(user_id: current_user.id, likes: 1, article_id: params["id"])  
     else
         Userlikes.where(article_id: params["id"], user_id: current_user.id ).update_all(likes: 1)
     end
+    likes = Userlikes.where(article_id: params["id"], likes: 1).count()
+    dislikes = Userlikes.where(article_id: params["id"], likes: 0).count()
+
+    likes = likes + 1
+    Ranking.where(id: params["id"]).update_all(likes: likes, dislikes: dislikes)
     redirect_to :back
   end
 
   def dislike
-    rank = Ranking.find_by(id: params["id"])
-    dislikes = rank.dislikes + 1
-    likes = rank.likes == 0 ? 0 : rank.likes - 1
-    Ranking.where(id: params["id"]).update_all(likes: likes, dislikes: dislikes)
     u_likes = Userlikes.find_by(article_id: params["id"], user_id: current_user.id )
     if u_likes.nil?  
        Userlikes.create(user_id: current_user.id, likes: 0, article_id: params["id"])  
     else 
         Userlikes.where(article_id: params["id"], user_id: current_user.id ).update_all(likes: 0)
     end
+    dislikes = Userlikes.where(article_id: params["id"], likes: 0).count()
+    likes = Userlikes.where(article_id: params["id"], likes: 1).count()
+    dislikes = dislikes + 1
+    Ranking.where(id: params["id"]).update_all(dislikes: dislikes, likes: likes)
     redirect_to :back
   end
 
   def comment
-    Ranking.where(id: params["id"]).update_all(admin: params["rank"])
+    Comments.create(
+        user_id: current_user.id, 
+        article_id: params["id"],
+        comment: params[:req]["name"],
+        created_date: Time.now.getutc(),
+        updated_date: Time.now.getutc(),
+    )
+
     redirect_to :back
   end
 

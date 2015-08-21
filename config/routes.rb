@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   post "/rank", to: "article#rank"
   post "/like", to: "article#like"
   post "/dislike", to: "article#dislike"
+  post "/comment", to: "article#comment"
   root to: "article#index"
 end

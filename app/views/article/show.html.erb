@@ -38,6 +38,17 @@ By: <b><%= @authors[0] %></b>
 <p><%= (h @content[0]).gsub("\n", "<br />").html_safe %></p>
 </div>
 <h3>Comments</h3>
+<% if current_user %> 
+    <%= form_for(:req, url: '/comment') do |form| %>
+      <div class="form-group">
+        <%= form.label :comment %>
+        <%= form.text_area :name, class: "form-control" %>
+        <%= form.hidden_field :id %>
+        <%= hidden_field_tag 'id', @my_id  %>
+      </div>
+      <%= form.button 'Add Comment', class: "btn btn-success" %>
+    <% end %>
+<% end %>
 <% @comments.each do |comment| %>
   <div>
     <strong><%= comment.name %></strong>
