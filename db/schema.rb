@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "category_id"
   end
 
+  add_index "article", ["date"], name: "time_idx", using: :btree
+
   create_table "author", id: false, force: :cascade do |t|
     t.integer "id"
     t.string  "name",  limit: 50
@@ -38,13 +40,16 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "name"
   end
 
-  create_table "comments", id: false, force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.string  "article_id",   default: "50"
     t.text    "comment"
     t.date    "created_date"
     t.date    "updated_date"
   end
+
+  add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "content", id: false, force: :cascade do |t|
     t.text "id"
@@ -65,6 +70,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "dislikes"
   end
 
+  add_index "ranking", ["id"], name: "id_idx", using: :btree
+
   create_table "source", id: false, force: :cascade do |t|
     t.integer "id"
     t.string  "name"
@@ -78,11 +85,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.boolean "admin",           default: false
   end
 
-  create_table "userlikes", id: false, force: :cascade do |t|
+  create_table "userlikes", force: :cascade do |t|
     t.integer "user_id"
-    t.string  "article_id", default: "50"
     t.integer "likes"
+    t.string  "article_id", default: "50"
   end
+
+  add_index "userlikes", ["article_id"], name: "index_userlikes_on_article_id", using: :btree
+  add_index "userlikes", ["user_id"], name: "index_userlikes_on_user_id", using: :btree
 
   add_foreign_key "content", "article", column: "id", name: "content_id_fkey"
   add_foreign_key "metatags", "article", column: "id", name: "metatags_id_fkey"
