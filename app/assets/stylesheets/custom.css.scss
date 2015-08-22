@@ -97,13 +97,18 @@ body {
 }
 
 #color-norm { 
-    background-color: white;
+    opacity: 0.4;
+    padding-right: 10px;
 }
 
 #color-green { 
-    background-color: #BDECB6;
+    color: #7FFF00;
+    font-weight: bold;
+    padding-right: 10px;
 }
 
 #color-red { 
-    background-color: #FF7878;
+    color: #FF7878;
+    font-weight: bold;
+    padding-right: 10px;
 }

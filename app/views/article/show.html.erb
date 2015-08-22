@@ -6,8 +6,8 @@ By: <b><%= @authors[0] %></b>
 <% end -%>
  Published at: <b><%= @date[0].to_formatted_s(:long)  %></b>
 </h5>
-<% if flash[:notice] %>
-    <div class="notice" style="background-color: yellow;"><%= flash[:notice] %></div>
+<% if flash[:notice1] %>
+    <div class="notice" style="background-color: yellow;"><%= flash[:notice1] %></div>
 <% end %>
 <% if current_user.try(:admin?) %>
     <%= form_tag("/rank", method: "post") do %>
@@ -19,15 +19,15 @@ By: <b><%= @authors[0] %></b>
     <p>Current Rank: <%= @def_rank[0] %><p>
 <% end %>
 <% if @likes.nil? %>
-    <%= button_to "Like", { action: "like", id: @my_id }, { id: "color-norm" } %>
-    <%= button_to "Dislike", { action: "dislike", id: @my_id }, { id: "color-norm" } %>
+    <%= link_to "UpVote", '/like?' + {id: @my_id}.to_param, method: :post, class: "glyphicon glyphicon-arrow-up", id: "color-norm" %>
+    <%= link_to "DownVote", '/dislike?' + {id: @my_id}.to_param, method: :post, class: "glyphicon glyphicon-arrow-down", id: "color-norm" %>
 <% else %>
     <% if @likes[0] == 1 %>
-        <%= button_to "Like", { action: "like", id: @my_id }, { id: "color-green" } %>
-        <%= button_to "Dislike", { action: "dislike", id: @my_id }, { id: "color-norm" } %>
+        <%= link_to "UpVote", '/like?' + {id: @my_id}.to_param, method: :post, class: "glyphicon glyphicon-arrow-up", id: "color-green" %>
+        <%= link_to "DownVote", '/dislike?' + {id: @my_id}.to_param, method: :post, class: "glyphicon glyphicon-arrow-down", id: "color-norm" %>
     <% else %>
-        <%= button_to "Like", { action: "like", id: @my_id }, { id: "color-norm" } %>
-        <%= button_to "Dislike", { action: "dislike", id: @my_id }, { id: "color-red" } %>
+        <%= link_to "UpVote", '/like?' + {id: @my_id}.to_param, method: :post, class: "glyphicon glyphicon-arrow-up", id: "color-norm" %>
+        <%= link_to "DownVote", '/dislike?' + {id: @my_id}.to_param, method: :post, class: "glyphicon glyphicon-arrow-down", id: "color-red" %>
     <% end %>
 <% end %>
 <div class="article-show">

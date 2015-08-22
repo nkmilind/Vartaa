@@ -111,12 +111,10 @@ class ArticleController < ApplicationController
         end
         likes = Userlikes.where(article_id: params["id"], likes: 1).count()
         dislikes = Userlikes.where(article_id: params["id"], likes: 0).count()
-
-        likes = likes + 1
         Ranking.where(id: params["id"]).update_all(likes: likes, dislikes: dislikes)
         redirect_to :back
     else
-        flash[:notice] = "You need to be signed in to like"
+        flash[:notice1] = "You need to be signed in to like"
         redirect_to :back
     end 
   end
@@ -131,11 +129,10 @@ class ArticleController < ApplicationController
         end
         dislikes = Userlikes.where(article_id: params["id"], likes: 0).count()
         likes = Userlikes.where(article_id: params["id"], likes: 1).count()
-        dislikes = dislikes + 1
         Ranking.where(id: params["id"]).update_all(dislikes: dislikes, likes: likes)
         redirect_to :back
     else
-        flash[:notice] = "You need to be signed in to dislike"
+        flash[:notice1] = "You need to be signed in to dislike"
         redirect_to :back
     end
   end
