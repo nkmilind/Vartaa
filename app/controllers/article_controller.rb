@@ -1,7 +1,7 @@
 class ArticleController < ApplicationController
   skip_before_filter :auth, only: [:show, :index, :politics, :business, :oped, :sports, :ent, :like, :dislike]
   def index
-    @latest = Article.select('title').where(
+    @latest = Article.select('title, date').where(
         "date >= ? AND category_id not in (?,?,?,?,?,?,?)", 
         Date.today.prev_day.to_formatted_s(:db),
         3, 4, 5, 6, 62, 115, 117 
@@ -114,6 +114,7 @@ class ArticleController < ApplicationController
         Ranking.where(id: params["id"]).update_all(likes: likes, dislikes: dislikes)
         redirect_to :back
     else
+        session[:return_to] ||= request.referer
         flash[:notice1] = "You need to be signed in to like"
         redirect_to :back
     end 
@@ -132,6 +133,7 @@ class ArticleController < ApplicationController
         Ranking.where(id: params["id"]).update_all(dislikes: dislikes, likes: likes)
         redirect_to :back
     else
+        session[:return_to] ||= request.referer
         flash[:notice1] = "You need to be signed in to dislike"
         redirect_to :back
     end

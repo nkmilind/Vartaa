@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
       # Yes, the user exists
       if @user.authenticate(params["password"])
         session["user_id"] = @user.id
-        redirect_to root_url
+        redirect_to session.delete(:return_to)
       else
-        redirect_to new_sessions_url, alert: 'No way!!!'
+        redirect_to new_sessions_url, alert: 'Invalid username or password!!!'
       end
     else
       # No user with that email

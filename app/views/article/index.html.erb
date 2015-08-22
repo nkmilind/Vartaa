@@ -14,7 +14,7 @@
       					</div>
       					<div class="panel-body" style="min-height: 1385px; max-height: 1385px; overflow-y: scroll;">
                         <% @latest.each do |late| %>
-                           <p><%= HTMLEntities.new.decode late.title %></p>
+                           <p><%= HTMLEntities.new.decode late.title %> - <%= time_ago_in_words(late.date) %> ago</p>
        					<% end %>
                         </div>
       				</div>
