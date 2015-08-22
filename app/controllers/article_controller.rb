@@ -114,7 +114,7 @@ class ArticleController < ApplicationController
         Ranking.where(id: params["id"]).update_all(likes: likes, dislikes: dislikes)
         redirect_to :back
     else
-        flash[:notice1] = "You need to be signed in to like"
+        flash[:notice1] = "Please sign in in to upvote an article"
         redirect_to :back
     end 
   end
@@ -132,7 +132,7 @@ class ArticleController < ApplicationController
         Ranking.where(id: params["id"]).update_all(dislikes: dislikes, likes: likes)
         redirect_to :back
     else
-        flash[:notice1] = "You need to be signed in to dislike"
+        flash[:notice1] = "Please sign in to downvote an article"
         redirect_to :back
     end
   end
