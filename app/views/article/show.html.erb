@@ -37,11 +37,11 @@ By: <b><%= @authors[0] %></b>
         <% end %>
 <p><%= (h @content[0]).gsub("\n", "<br />").html_safe %></p>
 </div>
-<h3>Comments</h3>
+<h3>User Comments</h3>
 <% if current_user %> 
     <%= form_for(:req, url: '/comment') do |form| %>
       <div class="form-group">
-        <%= form.label :comment %>
+<!--         <%= form.label :comment %> -->
         <%= form.text_area :name, class: "form-control" %>
         <%= form.hidden_field :id %>
         <%= hidden_field_tag 'id', @my_id  %>
