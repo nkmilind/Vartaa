@@ -1,5 +1,5 @@
 class ArticleController < ApplicationController
-  skip_before_filter :auth, only: [:show, :index, :politics, :business, :oped, :sports, :ent]
+  skip_before_filter :auth, only: [:show, :index, :politics, :business, :oped, :sports, :ent, :like, :dislike]
   def index
     @latest = Article.select('title').where(
         "date >= ? AND category_id not in (?,?,?,?,?,?,?)", 
@@ -102,32 +102,42 @@ class ArticleController < ApplicationController
   end
 
   def like
-    u_likes = Userlikes.find_by(article_id: params["id"], user_id: current_user.id )
-    if u_likes.nil?  
-       Userlikes.create(user_id: current_user.id, likes: 1, article_id: params["id"])  
-    else
-        Userlikes.where(article_id: params["id"], user_id: current_user.id ).update_all(likes: 1)
-    end
-    likes = Userlikes.where(article_id: params["id"], likes: 1).count()
-    dislikes = Userlikes.where(article_id: params["id"], likes: 0).count()
+    if current_user
+        u_likes = Userlikes.find_by(article_id: params["id"], user_id: current_user.id )
+        if u_likes.nil?  
+           Userlikes.create(user_id: current_user.id, likes: 1, article_id: params["id"])  
+        else
+            Userlikes.where(article_id: params["id"], user_id: current_user.id ).update_all(likes: 1)
+        end
+        likes = Userlikes.where(article_id: params["id"], likes: 1).count()
+        dislikes = Userlikes.where(article_id: params["id"], likes: 0).count()
 
-    likes = likes + 1
-    Ranking.where(id: params["id"]).update_all(likes: likes, dislikes: dislikes)
-    redirect_to :back
+        likes = likes + 1
+        Ranking.where(id: params["id"]).update_all(likes: likes, dislikes: dislikes)
+        redirect_to :back
+    else
+        flash[:notice] = "You need to be signed in to like"
+        redirect_to :back
+    end 
   end
 
   def dislike
-    u_likes = Userlikes.find_by(article_id: params["id"], user_id: current_user.id )
-    if u_likes.nil?  
-       Userlikes.create(user_id: current_user.id, likes: 0, article_id: params["id"])  
-    else 
-        Userlikes.where(article_id: params["id"], user_id: current_user.id ).update_all(likes: 0)
+    if current_user
+        u_likes = Userlikes.find_by(article_id: params["id"], user_id: current_user.id )
+        if u_likes.nil?  
+           Userlikes.create(user_id: current_user.id, likes: 0, article_id: params["id"])  
+        else 
+            Userlikes.where(article_id: params["id"], user_id: current_user.id ).update_all(likes: 0)
+        end
+        dislikes = Userlikes.where(article_id: params["id"], likes: 0).count()
+        likes = Userlikes.where(article_id: params["id"], likes: 1).count()
+        dislikes = dislikes + 1
+        Ranking.where(id: params["id"]).update_all(dislikes: dislikes, likes: likes)
+        redirect_to :back
+    else
+        flash[:notice] = "You need to be signed in to dislike"
+        redirect_to :back
     end
-    dislikes = Userlikes.where(article_id: params["id"], likes: 0).count()
-    likes = Userlikes.where(article_id: params["id"], likes: 1).count()
-    dislikes = dislikes + 1
-    Ranking.where(id: params["id"]).update_all(dislikes: dislikes, likes: likes)
-    redirect_to :back
   end
 
   def comment
