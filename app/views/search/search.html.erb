@@ -8,15 +8,16 @@
   </p>
 <% end %>
 
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <h3>
-        <a href="/article/<%= article.id %>"> <%= HTMLEntities.new.decode article.title %></a>
-      </h3>
-    </li>
-  <% end %>
-</ul>
+<% @articles.each do |article| %>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <a href="/article/<%= article.id %>"> <%= HTMLEntities.new.decode article.title %> </a>
+        </div>
+        <div class="panel-footer">
+            From <%= article.source %> on <%= article.date %> 
+        </div>
+    </div>
+<% end %>
 <div id="search">
     <% if @articles.any?  %>
         <%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
