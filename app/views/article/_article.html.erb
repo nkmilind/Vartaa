@@ -1,53 +1,56 @@
 <div class="grid">
-  <% if current_page?(root_path) && !params["page"] %>
-  <div class="col-xs-6 bootcards-list">
-    <% else %>
+<% if current_page?(root_path) && !params["page"] %>
+    <div class="col-xs-6 bootcards-list">
+<% else %>
     <div class="col-xs-4 bootcards-list">
-      <% end %>
-   <div class="panel panel-default bootcards-media">
-      <div class="panel-heading" style="min-height: 70px; max-height: 70px; overflow-y: scroll;">
-        <h3 class="panel-title" style="    font-size: 14.5px;">
-            <img id = "publication-logo" src="/images/<%= article.source_id %>.jpg">
-                <small><%= HTMLEntities.new.decode article.date.to_formatted_s(:long) %></small>
-                <a href="/article/<%= article.id %>"><%= HTMLEntities.new.decode article.title %></a>
-        </h3>
-      </div>
-      <div class="panel-body" style="min-height: 70x; max-height: 70px; overflow-y: scroll;">
-        <%= HTMLEntities.new.decode article.description %>
-      </div>
-      <div class="panel-body text-center">
+<% end %>
+        <div class="panel panel-default bootcards-media">
+            <div class="panel-heading" style="min-height: 70px; max-height: 70px; overflow-y: scroll;">
+                <h3 class="panel-title" style="font-size: 14.5px;">
+                    <img id = "publication-logo" src="/images/<%= article.source_id %>.jpg">
+                    <small><%= HTMLEntities.new.decode article.date.to_formatted_s(:long) %></small>
+                    <a href="/article/<%= article.id %>"><%= HTMLEntities.new.decode article.title %></a>
+                </h3>
+            </div>
+        <div class="panel-body" style="min-height: 70x; max-height: 70px; overflow-y: scroll;">
+            <%= HTMLEntities.new.decode article.description %>
+        </div>
+        <div class="panel-body">
         <% if article.photo_url.to_s == ''  %>
             <a href="/article/<%= article.id %>">
-                <img src="/images/<%= article.source_id %>.jpg" class="img-responsive" style="min-height: 200px; max-height: 20px;"/>
+                <img src="/images/<%= article.source_id %>.jpg" class="img-responsive" style="min-height: 200px; max-height: 200px; margin: auto">
+            </a>
         <% else %>
-            <a href="/article/<%= article.id %>"><img src="<%=article.photo_url %>" class="img-responsive" style="min-height: 200px; max-height: 200px;"/>
+            <a href="/article/<%= article.id %>">
+                <img src="<%=article.photo_url %>" class="img-responsive" style="min-height: 200px; max-height: 200px; margin: auto">
+            </a>
         <% end %>
+        </div>
         <div class="panel-footer" style="min-height: 45x; max-height: 45px;">
-          <div class="btn-group btn-group-justified">
-            <div class="btn-group">
-              <button class="btn btn-default btn-sm">
-              <i class="fa fa-arrow-up"></i>
-              <%= article.likes %>
-              </button>
+            <div class="btn-group btn-group-justified">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm">
+                        <i class="fa fa-arrow-up"></i>
+                        <%= article.likes %>
+                    </button>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm">
+                        <i class="fa fa-arrow-down"></i>
+                        <%= article.dislikes %>
+                    </button>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm">
+                        <% if article.admin == 1000 %>
+                            <i class="fa fa-star"></i>
+                        <% else %>
+                            <i class="fa fa-star" style="color:#ffd700"></i>
+                        <% end %>
+                        Our Pick
+                    </button>
+                </div>
+            </div>
         </div>
-          <div class="btn-group">
-            <button class="btn btn-default btn-sm">
-            <i class="fa fa-arrow-down"></i>
-            <%= article.dislikes %>
-          </button>
-        </div>
-        <div class="btn-group">
-          <button class="btn btn-default btn-sm">
-          <% if article.admin == 1000 %>
-          <i class="fa fa-star"></i>
-          <% else %>
-          <i class="fa fa-star" style="color:#ffd700"></i>
-          <% end %>
-          Our Pick
-          </button>
-        </div>
-          </div>
-        </div>
-      </div>
-  </div>
+    </div>
 </div>
