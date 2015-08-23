@@ -15,8 +15,8 @@ class SearchController < ApplicationController
                     } 
                 },
                 sort: {
-                    date:   { "order": "desc" },
-                    _score: { "order": "desc" }
+                    date:   { order: "desc" },
+                    _score: { order: "desc" }
                 } 
             ).paginate(page: params['page'] || 1, per_page: 20)
         end
