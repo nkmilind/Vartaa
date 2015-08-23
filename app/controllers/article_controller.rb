@@ -1,12 +1,6 @@
 class ArticleController < ApplicationController
   skip_before_filter :auth, only: [:show, :index, :politics, :business, :oped, :sports, :ent, :like, :dislike]
   def index
-    @latest = Article.select('article.id as idx, title, date').where(
-        "date >= ? AND category_id not in (?,?,?,?,?,?,?)", 
-        Date.today.prev_day.to_formatted_s(:db),
-        3, 4, 5, 6, 62, 115, 117 
-    ).joins(' JOIN ranking on ranking.id = article.id').order('date DESC', 'ranking.page_rank').limit(50) 
-
     @article = Article.select('*, ranking.admin, ranking.likes, ranking.dislikes').where(
         "date >= ? AND category_id not in (?,?,?,?,?,?,?)", 
         Date.today.prev_day.to_formatted_s(:db),
