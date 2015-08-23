@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       # Yes, the user exists
       if @user.authenticate(params["password"])
         session["user_id"] = @user.id
-        redirect_to session.delete(:return_to)
+        redirect_to session.delete(:return_to) || root_url
       else
         redirect_to new_sessions_url, alert: 'Invalid username or password!!!'
       end
