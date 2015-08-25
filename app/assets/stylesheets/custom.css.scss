@@ -1,5 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+* {
+  border-radius: 0 !important;
+}
+
 #logo {
 	height: 80%;
     margin-top: 8px;
@@ -42,6 +47,14 @@ body {
 .col-sm-3 {
   margin-left: 0px;
   margin-right: 0px;
+}
+
+#text-panel {
+ padding-top: 5px; 
+}
+
+.panel-footer {
+  padding: 0px;
 }
 
 .pagination {
