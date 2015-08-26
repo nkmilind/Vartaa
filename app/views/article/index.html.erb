@@ -1,5 +1,6 @@
 <div id="main">
     <div class="row">
+      <% if current_page?(root_path) -%>
     	  <div class="col-2-3">
           <%= render @article %>
     	  </div>
@@ -21,6 +22,9 @@
   		  	   </div>
 		  </div>
     </div>
+        <% else %>
+    <%= render @article %>
+    <% end %>
 </div>
 <div id="infinite-scrolling" style="visibility:hidden">
   <%= will_paginate %>
