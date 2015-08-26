@@ -1,14 +1,14 @@
 <div class="grid">
   <% if !params["page"] %>
-  <div class="col-xs-6 bootcards-list">
+  <div class="col-sm-6 bootcards-list">
     <% else %>
-    <div class="col-xs-4 bootcards-list">
+    <div class="col-sm-4 bootcards-list">
       <% end %>
    <div class="panel panel-default bootcards-media">
-      <div class="panel-heading" style="min-height: 75px; max-height: 75px; overflow-y: scroll;">
-        <h3 class="panel-title" style="    font-size: 14.5px;">
+      <div class="panel-heading" style="min-height: 75px; max-height: 75px;">
+        <h3 class="panel-title" style="    font-size: 14px;">
             <img id = "publication-logo" src="/images/<%= article.source_id %>.jpg">
-                <small><%= HTMLEntities.new.decode article.date.to_formatted_s(:long) %></small>
+                <small><%= HTMLEntities.new.decode article.date.to_formatted_s(:short) %></small>
                 <a href="/article/<%= article.id %>"><%= HTMLEntities.new.decode article.title %></a>
         </h3>
       </div>
