@@ -5,6 +5,6 @@ class Article < ActiveRecord::Base
     include Elasticsearch::Model::Callbacks
     index_name    "vartaa"
     document_type "article"
-    self.per_page = 8
+    self.per_page = 6
 end
 

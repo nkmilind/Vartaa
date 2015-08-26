@@ -1,14 +1,14 @@
 <div class="grid">
-    <div class="col-sm-3 bootcards-list">
+    <div class="col-sm-4 bootcards-list">
         <div class="panel panel-default bootcards-media">
-            <div class="panel-heading" style="min-height: 70px; max-height: 70px; overflow-y: scroll;">
-                <h3 class="panel-title" style="font-size: 14.5px;">
+            <div class="panel-heading" style="min-height: 75px; max-height: 75px;">
+                <h3 class="panel-title" style="font-size: 14px;">
                     <img id = "publication-logo" src="/images/<%= article.source_id %>.jpg">
                     <small><%= HTMLEntities.new.decode article.date.to_formatted_s(:long) %></small>
                     <a href="/article/<%= article.id %>"><%= HTMLEntities.new.decode article.title %></a>
                 </h3>
             </div>
-        <div class="panel-body" style="min-height: 70x; max-height: 70px; overflow-y: scroll;">
+        <div class="panel-body" id="text-panel" style="min-height: 80px; max-height: 80px; overflow-y: hidden;">
             <%= HTMLEntities.new.decode article.description %>
         </div>
         <div class="panel-body">

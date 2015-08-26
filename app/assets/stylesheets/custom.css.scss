@@ -6,6 +6,10 @@
     margin-left: -240px;
 }
 
+* {
+  border-radius: 0 !important;
+}
+
 #publication-logo {
 	height: 20px;
   	margin-top: 0px;
@@ -42,6 +46,14 @@ body {
 .col-sm-3 {
   margin-left: 0px;
   margin-right: 0px;
+}
+
+#text-panel {
+ padding-top: 5px; 
+}
+
+.panel-footer {
+  padding: 0px;
 }
 
 .pagination {
