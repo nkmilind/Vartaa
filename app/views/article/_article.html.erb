@@ -5,8 +5,21 @@
     <div class="col-sm-4 bootcards-list">
       <% end %>
    <div class="panel panel-default bootcards-media">
-      <div class="panel-heading" style="min-height: 75px; max-height: 75px;">
-        <h3 class="panel-title" style="    font-size: 14px;">
+      <div class="panel-heading" id="title-panel" style="min-height: 75px; max-height: 75px; background-color: #90D4CD;
+
+      <% if article.category_id==31 || article.category_id==168 %>background-color: #B6BD70; <%end%> 
+
+      <% if article.category_id==30 || article.category_id==32 || article.category_id==33 || article.category_id==38 || article.category_id==59 || article.category_id==63 || article.category_id==138 %>background-color: #F6F6C2; <%end%>
+
+      <% if article.category_id==8 || article.category_id==9 || article.category_id==37 || article.category_id==74 || article.category_id==89 || article.category_id==112 || article.category_id==117 || article.category_id==120 %>background-color: #FCB9A4; <%end%> 
+
+      <% if article.category_id==10 || article.category_id==57 || article.category_id==64 || article.category_id==70 || article.category_id==73 %>background-color: #DE9388; <%end%> 
+
+      <% if article.category_id==6 || article.category_id==99 || article.category_id==100 || article.category_id==101 || article.category_id==105 || article.category_id==124 || article.category_id==129 || article.category_id==135 || article.category_id==148 %>background-color: #DEABC9;<%else%> 
+
+      <%end%>">
+
+        <h3 class="panel-title" style="font-size: 14px;">
             <img id = "publication-logo" src="/images/<%= article.source_id %>.jpg">
                 <small><%= HTMLEntities.new.decode article.date.to_formatted_s(:short) %></small>
                 <a href="/article/<%= article.id %>"><%= HTMLEntities.new.decode article.title %></a>
@@ -29,13 +42,13 @@
               <i class="fa fa-arrow-up"></i>
               <%= article.likes %>
               </button>
-        </div>
+            </div>
           <div class="btn-group">
             <button class="btn btn-default btn-sm">
             <i class="fa fa-arrow-down"></i>
             <%= article.dislikes %>
           </button>
-        </div>
+          </div>
         <div class="btn-group">
           <button class="btn btn-default btn-sm">
           <% if article.admin == 1000 %>
@@ -46,7 +59,7 @@
           Our Pick
           </button>
         </div>
-          </div>
+        </div>
         </div>
       </div>
   </div>
