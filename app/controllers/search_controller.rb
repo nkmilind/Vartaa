@@ -19,7 +19,6 @@ class SearchController < ApplicationController
                     _score: { order: "desc" }
                 } 
             ).paginate(page: params['page'] || 1, per_page: 20)
-            logger.info "#{@articles[0].inspect}"
         end
     end
 end

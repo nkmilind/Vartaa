@@ -1,40 +1,43 @@
 class UsersController < ApplicationController
-skip_before_action :auth, only: [:new, :create]
 
-  def index
-    @users = User.all
-  end
+    skip_before_action :auth, only: [:new, :create]
 
-  def show
-    @user = User.find_by(id: params["id"])
-  end
-
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.create(params["user"])
-    if @user.valid?
-      redirect_to users_index_path
-    else
-      render "new"
+    def index
+        @users = User.all
     end
-  end
 
-  def edit
-    @user = User.find_by(id: params["id"])
-  end
+    def show
+        @user = User.find_by(id: params["id"])
+    end
 
-  def update
-    @user = User.find_by(id: params["id"])
-    @user.update(params["user"])
-    redirect_to users_index_path
-  end
+    def new
+        @user = User.new
+    end
 
-  def destroy
-    @user = User.find_by(id: params["id"])
-    @user.destroy
-    redirect_to users_index_path
-  end
+    def create
+        @user = User.create(params["user"])
+        if @user.valid?
+            redirect_to users_index_path
+        else
+            render "new"
+        end
+    end
+
+    def edit
+        @user = User.find_by(id: params["id"])
+    end
+
+    def update
+        @user = User.find_by(id: params["id"])
+        @user.update(params["user"])
+        
+        redirect_to users_index_path
+    end
+
+    def destroy
+        @user = User.find_by(id: params["id"])
+        @user.destroy
+        
+        redirect_to users_index_path
+    end
 end
