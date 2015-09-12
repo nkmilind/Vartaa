@@ -43,7 +43,7 @@ class ArticleController < ApplicationController
     end
 
     def business
-        @article = Article.select(i
+        @article = Article.select(
                 '*, ranking.admin, ranking.likes, ranking.dislikes'
             ).where(
                 "date >= ? AND category_id in (?,?,?,?,?,?,?)", 
@@ -254,4 +254,4 @@ class ArticleController < ApplicationController
         redirect_to :back
     end
 
-en
+end
